@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const mongoose =require('mongoose')
+const bcrypt = require("bcrypt")
 const productRoute = require('./routes/productRoute');
 const errorMiddleware = require('./middleware/errorMiddleware')
 var cors = require('cors')
@@ -16,7 +17,7 @@ app.use(express.urlencoded({extended: false}))
 
 //Routes
 
-app.use('/api/products', productRoute);
+app.use('/api', productRoute);
 
 app.get('/', (req, res) => {
     res.send('Hello Node API')
