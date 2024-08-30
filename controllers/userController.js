@@ -4,10 +4,11 @@ const asyncHandler = require('express-async-handler')
 // get a single product
 const login = asyncHandler(async(req, res) => {
     try {
-        const {id} = req.params;
-        const product = await Product.findById(id);
-        res.status(200).json(product);
+        const {email} = req.body
+        const Email = await User.find({email});
+        res.status(200).json(Email);
     } catch (error) {
+        console.log(error)
         res.status(500);
         throw new Error('error.message');
     }
